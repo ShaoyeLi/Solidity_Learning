@@ -41,7 +41,9 @@ contract CarbonTrader {
 
     mapping(address => uint256) userToAllowance;
     mapping(address => uint256) userToFreezedAllowance;
+    mapping(address => uint256) auctionAmount;
     mapping(string => trade) idToTrade;
+
 
     address private immutable owner; //此处是immutable可否换成private
     IERC20 private token;
@@ -141,21 +143,78 @@ contract CarbonTrader {
     function deposit(string memory tradeId, uint256 amount, string memory info) public {
         trade storage currentTrade = idToTrade[tradeId];
 
-        bool success = token.transferFrom(msg.sender, address(this), amount);
+        bool success = token.transferFrom(msg.sender, address(this), amount);//这里是需要授权吗？为什么不用transfer
         if(!success) 
             revert CarbonTrader_TransferFailed();
         
         currentTrade.deposit[msg.sender] = amount;
         setBidInfo(tradeId, info);
     }
+//退还押金函数 入参：交易id  函数逻辑：获取交易，获取押金，押金置为0，从合约到发起人转账，若失败，押金改回，回退。
+    function  refound(string memory tradeId) public{//任何时候都可以发起退款吗？
+        trade storage currentTrade = idToTrade[tradeId];
+        uint256 depositAmount = currentTrade.deposit[msg.sender];
 
-    
+        currentTrade.deposit[msg.sender] = 0;
+
+        bool success = token.transfer(msg.sender,depositAmount);
+        if(!success) {
+            currentTrade.deposit[msg.sender] = depositAmount;
+            revert CarbonTrader_TransferFailed();
+        }
+        
+        
+
+    }
+
     function setBidInfo(string memory tradeId,string memory info) public {
         trade storage currentTrade = idToTrade[tradeId];
         currentTrade.cryptedInfo[msg.sender] = info; 
     }
 
-//退还押金函数 入参：交易id  函数逻辑：获取交易，获取押金，押金置为0，从合约到发起人转账，若失败，押金改回，回退。
+    function setBidKey(string memory tradeId, string memory key) public{
+        trade storage currentTrade = idToTrade[tradeId];
+        currentTrade.decrypteKey[msg.sender] = key;
+    }
 
+    function getBidInfo(string memory tradeId) public view returns (string memory){
+        trade storage currentTrade = idToTrade[tradeId];
+        return currentTrade.cryptedInfo[msg.sender];
+    }
 
+    function finalizeAuctionAndTransferCarbon(
+        string memory tradeId,
+        uint256 allowanceAmount,
+        uint256 additionalAmountToPay
+    ) public {
+        uint256 depositAmount = idToTrade[tradeId].deposit[msg.sender]; //这是谁的押金？有那么多人付押金怎么办？碳积分是一对一吗？你要买我的，我只卖给你，而不是放在池子里》最终转给卖家的押金？
+        idToTrade[tradeId].deposit[msg.sender]=0;
+
+        //把保证金和新补的钱给卖家
+        address seller = idToTrade[tradeId].seller;
+        auctionAmount[seller] += (depositAmount + additionalAmountToPay);
+
+        //扣除卖家的碳积分
+        userToAllowance[seller] -= allowanceAmount;
+
+        //增加买家的碳积分
+        userToAllowance[msg.sender] += allowanceAmount;
+
+        //把买家的钱转到合约里
+        bool success = token.transferFrom(msg.sender, address(this), additionalAmountToPay);
+        if(!success) revert CarbonTrader_TransferFailed();
+        
+    }            
+
+    function withdrawAuctionAmount() public {  //能调用这个函数的本身就是卖家了
+        uint256 withdrawAmount = auctionAmount[msg.sender];
+        auctionAmount[msg.sender] = 0;
+        bool success = token.transfer(msg.sender, withdrawAmount);//这里是需要授权吗？为什么不用transfer
+        if(!success) {
+            auctionAmount[msg.sender] = withdrawAmount;
+            revert CarbonTrader_TransferFailed();
+        }
+    }
+
+            //这么多函数方法，如何控制谁能调用什么函数呢？比如买家调用取款函数
 }

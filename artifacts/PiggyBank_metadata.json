@@ -1,0 +1,112 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_studentID",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "studentID",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"details": "A simple, personal smart contract to receive Ether deposits via **direct transfer**. The student ID is stored to identify the owner.",
+			"kind": "dev",
+			"methods": {
+				"constructor": {
+					"details": "Sets the deployer as the owner and stores their student ID.",
+					"params": {
+						"_studentID": "The student ID of the deployer."
+					}
+				},
+				"getBalance()": {
+					"details": "Returns the total balance of Ether held by this contract. The balance is returned in Wei."
+				}
+			},
+			"title": "PiggyBank (Faucet-Style)",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"PiggyBank.sol": "PiggyBank"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"PiggyBank.sol": {
+			"keccak256": "0xe24c041297565f583a6523c869da434396626236a6b3b43cd91d7892aef9b1e0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2d849a5eca0d1f2a6ee11bb43452d82d842e6053888259e513313ff163358d89",
+				"dweb:/ipfs/QmbB66AVb4BiiKb8RHN1XfnangY6723ndEsyLea4Ctxaa4"
+			]
+		}
+	},
+	"version": 1
+}

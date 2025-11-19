@@ -6,6 +6,11 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -16,6 +21,19 @@
 				"name": "Withdraw",
 				"outputs": [],
 				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -51,11 +69,11 @@
 	},
 	"sources": {
 		"Faucet.sol": {
-			"keccak256": "0x180370b276e30f7f9cd5316e34a00a35ffb43832fea2ffdb55ca36e3e54062cb",
+			"keccak256": "0x82e92d0d2ec24ea1621fdd2390521cbc7e3c03689174ca986bc5b33f2e0dce99",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://db041c408cc4ba2d7b183560bc5f20ec09f9c764b4787cf3d9f9c9286c28753a",
-				"dweb:/ipfs/QmcAuNjo2hj1HZxC3MPuQrrtqz5rPLnWoNYca7U19KiZfy"
+				"bzz-raw://b45438c23d3b0cc4b8e2a56e8842d2eb135a3c780a1ce8d3dee03170a99f0727",
+				"dweb:/ipfs/QmbiAkS7UVivFnzDusMW8k9Ue6jkcDXbs4Lf45usYrVi3z"
 			]
 		}
 	},

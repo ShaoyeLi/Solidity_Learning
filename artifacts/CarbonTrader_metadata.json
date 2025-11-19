@@ -131,6 +131,29 @@
 			{
 				"inputs": [
 					{
+						"internalType": "string",
+						"name": "tradeId",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "allowanceAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "additionalAmountToPay",
+						"type": "uint256"
+					}
+				],
+				"name": "finalizeAuctionAndTransferCarbon",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "user",
 						"type": "address"
@@ -160,6 +183,25 @@
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "tradeId",
+						"type": "string"
+					}
+				],
+				"name": "getBidInfo",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
 					}
 				],
 				"stateMutability": "view",
@@ -252,6 +294,19 @@
 						"internalType": "string",
 						"name": "tradeId",
 						"type": "string"
+					}
+				],
+				"name": "refound",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "tradeId",
+						"type": "string"
 					},
 					{
 						"internalType": "string",
@@ -260,6 +315,24 @@
 					}
 				],
 				"name": "setBidInfo",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "tradeId",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "key",
+						"type": "string"
+					}
+				],
+				"name": "setBidKey",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -278,6 +351,13 @@
 					}
 				],
 				"name": "unfreezeAllowance",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdrawAuctionAmount",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -327,11 +407,11 @@
 			]
 		},
 		"CarbonTrader.sol": {
-			"keccak256": "0xa825d56c588b03c3f36fa1cd869ddf4c89218dacf320ca6341896a068a53da3f",
+			"keccak256": "0xb3844c9f824cdc3ab34f1a8a92e79d5f6c2995639c62f5597241bf58dc3dc195",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7d4aab73ae8d39b720b0447d8ca85090dd7a731a7d0f4e7e4fd4bb37a00b2226",
-				"dweb:/ipfs/QmbkbCTcjQMofMNc79sXpTBAm89kp4yR6HV1V4ks3KNB62"
+				"bzz-raw://676bf4f768be8d1bb44ee7cc3d6d02abbb61b16bd847c57a02e2fffff5ec32e5",
+				"dweb:/ipfs/QmaDa8bu7BK4P8GrsRbUCEVx6yNqb3AZF5cyLRy68H4G4n"
 			]
 		}
 	},

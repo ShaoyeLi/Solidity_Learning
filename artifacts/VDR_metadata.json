@@ -1,0 +1,272 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "DIDs",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "exist",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "pk",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "issuer_did",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "cred_id",
+						"type": "string"
+					}
+				],
+				"name": "checkRevocation",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "did",
+						"type": "string"
+					}
+				],
+				"name": "getDID",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "did",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "pk",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "methodType",
+								"type": "string"
+							},
+							{
+								"internalType": "string[]",
+								"name": "context",
+								"type": "string[]"
+							}
+						],
+						"internalType": "struct VDR.DIDDoc",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "did",
+						"type": "string"
+					}
+				],
+				"name": "getIssuer",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "bool",
+								"name": "exist",
+								"type": "bool"
+							},
+							{
+								"internalType": "string",
+								"name": "methodType",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "pk",
+								"type": "string"
+							},
+							{
+								"internalType": "string[]",
+								"name": "revocationList",
+								"type": "string[]"
+							}
+						],
+						"internalType": "struct VDR.validIssuer",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "issuerData",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "exist",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "methodType",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "pk",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "did",
+						"type": "string"
+					}
+				],
+				"name": "registerDID",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "did",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_methodType",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "pk",
+						"type": "string"
+					}
+				],
+				"name": "registerIssuer",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "did",
+						"type": "string"
+					}
+				],
+				"name": "removeIssuer",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "did",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "cred_id",
+						"type": "string"
+					}
+				],
+				"name": "revoke",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"VDR.sol": "VDR"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"VDR.sol": {
+			"keccak256": "0xb3ee496f3a080c413e04d7011561ec1b4c77ef806383e0ced56d25d101aa1bdb",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://e2a611e5387a15f4d7a54c8f9a966d568d16bb2c5e7a05df9dd672d51862bc98",
+				"dweb:/ipfs/QmYebFWEeKpcVxSigZmf5n8Sa2ktLVevm5rF6ThP8tGdW3"
+			]
+		}
+	},
+	"version": 1
+}
